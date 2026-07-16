@@ -122,7 +122,7 @@ app.post('/api/pay', async (req, res) => {
         },
         expires_in: 600, // 10 minutos, igual ao site original
         webhook_url: process.env.PINPAY_WEBHOOK_URL,
-        metadata: { order_id: orderId },
+        metadata: { external_reference: orderId },
       }),
       signal: AbortSignal.timeout(30_000),
     });
