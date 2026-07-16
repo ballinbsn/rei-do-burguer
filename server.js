@@ -137,6 +137,7 @@ app.post('/api/pay', async (req, res) => {
     }
 
     const pix = await r.json();
+    console.log('[pinpay] resposta recebida:', JSON.stringify(pix)); // LOG TEMPORÁRIO PRA DEBUG
 
     orders.set(orderId, {
       orderId,
