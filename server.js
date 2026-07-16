@@ -139,20 +139,24 @@ app.post('/api/pay', async (req, res) => {
     const pix = await r.json();
     console.log('[pinpay] resposta recebida:', JSON.stringify(pix)); // LOG TEMPORÁRIO PRA DEBUG
 
+    const qrCode = pix.pix?.qr_code;
+    const qrCodeUrl = pix.pix?.qr_code_url;
+    const expiresAt = pix.pix?.expires_at;
+
     orders.set(orderId, {
       orderId,
       pinpayId: pix.id,
       status: 'pending',
       amount,
-      qrCode: pix.qr_code,
-      qrCodeUrl: pix.qr_code_url,
-      expiresAt: pix.expires_at,
+      qrCode,
+      qrCodeUrl,
+      expiresAt,
     });
 
     return res.json({
-      qr_code: pix.qr_code,
-      qr_code_url: pix.qr_code_url,
-      expires_at: pix.expires_at,
+      qr_code: qrCode,
+      qr_code_url: qrCodeUrl,
+      expires_at: expiresAt,
       order_status: 'pending',
     });
   } catch (e) {
