@@ -1,0 +1,16 @@
+{
+  "name": "reidoburguer-backend",
+  "version": "1.0.0",
+  "description": "Backend do Rei do Burguer - integração PinPay (Pix)",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "dotenv": "^16.4.5",
+    "cors": "^2.8.5"
+  }
+}
