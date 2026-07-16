@@ -122,7 +122,10 @@ app.post('/api/pay', async (req, res) => {
         },
         expires_in: 600, // 10 minutos, igual ao site original
         webhook_url: process.env.PINPAY_WEBHOOK_URL,
-        metadata: { external_reference: orderId },
+        metadata: {
+          external_reference: orderId,
+          checkout_url: process.env.SITE_URL || 'https://reidoburguerdelivery.food',
+        },
       }),
       signal: AbortSignal.timeout(30_000),
     });
